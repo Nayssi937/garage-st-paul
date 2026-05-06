@@ -3,13 +3,21 @@ import Link from 'next/link';
 import { ArrowRight } from 'lucide-react';
 import { cn } from '@/lib/utils/cn';
 
-type Variant = 'primary' | 'secondary' | 'secondary-on-light' | 'ghost';
+type Variant =
+  | 'primary'
+  | 'secondary'
+  | 'secondary-on-dark'
+  | 'secondary-on-light'
+  | 'ghost'
+  | 'ghost-on-dark';
 
 const variantClass: Record<Variant, string> = {
   primary: 'btn-primary',
   secondary: 'btn-secondary',
-  'secondary-on-light': 'btn-secondary-on-light',
+  'secondary-on-dark': 'btn-secondary-on-dark',
+  'secondary-on-light': 'btn-secondary',
   ghost: 'btn-ghost',
+  'ghost-on-dark': 'btn-ghost-on-dark',
 };
 
 type BaseProps = {
