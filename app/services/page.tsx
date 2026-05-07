@@ -1,101 +1,107 @@
-import type { Metadata } from 'next';
-import Link from 'next/link';
 import Image from 'next/image';
-import { ArrowUpRight, Check } from 'lucide-react';
-import { PageHero } from '@/components/layout/PageHero';
+import { Check } from 'lucide-react';
 import { Container } from '@/components/ui/Container';
-import { Section } from '@/components/ui/Section';
+import { Button } from '@/components/ui/Button';
 import { ContactCTA } from '@/components/sections/ContactCTA';
+import { FadeUp } from '@/components/motion/FadeUp';
 import { services } from '@/lib/data/services';
 import { buildMetadata } from '@/lib/seo';
+import { cn } from '@/lib/utils/cn';
 
-export const metadata: Metadata = buildMetadata({
-  title: 'Services — Mécanique, préparation, restauration, achat & vente',
+export const metadata = buildMetadata({
+  title: 'Nos services',
   description:
-    'Quatre expertises pour les voitures de sport, de collection et de compétition. Découvrez nos prestations.',
+    "Entretien, vente, diagnostic, pneus & géométrie : quatre métiers exercés avec la même rigueur depuis 1962, dans notre atelier de Fribourg.",
   path: '/services',
 });
 
 export default function ServicesPage() {
   return (
     <>
-      <PageHero
-        eyebrow="Nos prestations"
-        title={
-          <>
-            Quatre expertises,
-            <br />
-            <span className="text-racing-500">une exigence</span>.
-          </>
-        }
-        description="Mécanique de précision, préparation, restauration, achat & vente — sans sous-traitance, sans approximation."
-        image="https://images.unsplash.com/photo-1486262715619-67b85e0b08d3?w=2400&auto=format&fit=crop&q=85"
-        imageAlt="Atelier LS Automobiles"
-        breadcrumbs={[{ label: 'Accueil', href: '/' }, { label: 'Services' }]}
-        size="lg"
-      />
-
-      <Section bg="default">
+      <section className="on-dark relative isolate overflow-hidden bg-navy-700 pb-16 pt-32 text-cream-100 md:pb-20 md:pt-40">
         <Container>
-          <ul className="flex flex-col gap-8 lg:gap-px lg:bg-ink-700">
-            {services.map((service, i) => {
-              const Icon = service.icon;
-              const reverse = i % 2 === 1;
-              return (
-                <li key={service.slug} className="bg-ink-900" id={service.slug}>
-                  <article className="grid grid-cols-1 lg:grid-cols-12">
-                    <div
-                      className={`relative aspect-[4/3] lg:col-span-5 lg:aspect-auto ${reverse ? 'lg:order-2' : ''}`}
-                    >
-                      <Image
-                        src={service.cover}
-                        alt={service.title}
-                        fill
-                        sizes="(max-width: 1024px) 100vw, 42vw"
-                        className="object-cover"
-                      />
-                      <span className="absolute left-6 top-6 font-mono text-2xs uppercase tracking-widest text-ink-50">
-                        // {service.number}
-                      </span>
-                    </div>
-                    <div className="flex flex-col gap-6 p-8 lg:col-span-7 lg:p-14">
-                      <Icon className="h-10 w-10 text-racing-500" strokeWidth={1.25} />
-                      <h2 className="font-display text-display-md uppercase tracking-wide text-ink-50">
-                        {service.title}
-                      </h2>
-                      <span className="hairline-racing" />
-                      <p className="text-base leading-relaxed text-ink-200 md:text-lg">
-                        {service.description}
-                      </p>
-                      <ul className="grid grid-cols-1 gap-x-6 gap-y-3 md:grid-cols-2">
-                        {service.features.map((feature) => (
-                          <li key={feature} className="flex items-start gap-2.5 text-sm text-ink-200">
-                            <Check
-                              className="mt-0.5 h-4 w-4 shrink-0 text-racing-500"
-                              strokeWidth={2}
-                            />
-                            <span>{feature}</span>
-                          </li>
-                        ))}
-                      </ul>
-                      <Link
-                        href={`/services/${service.slug}`}
-                        className="group mt-2 inline-flex items-center gap-2 self-start border-b border-racing-500 pb-1 font-mono text-2xs uppercase tracking-widest text-racing-500 transition-colors hover:text-racing-400"
-                      >
-                        En savoir plus
-                        <ArrowUpRight
-                          className="h-3.5 w-3.5 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
-                          strokeWidth={1.75}
-                        />
-                      </Link>
-                    </div>
-                  </article>
-                </li>
-              );
-            })}
-          </ul>
+          <FadeUp>
+            <span className="font-sans text-eyebrow uppercase tracking-eyebrow text-cream-100/60">
+              Nos services
+            </span>
+          </FadeUp>
+          <FadeUp delay={0.1}>
+            <h1 className="mt-5 max-w-3xl font-serif text-display-xl font-normal text-cream-50">
+              Quatre métiers, une exigence.
+            </h1>
+          </FadeUp>
+          <FadeUp delay={0.2}>
+            <p className="mt-5 max-w-xl text-base leading-relaxed text-cream-100/75">
+              Depuis 1962, nous couvrons l&rsquo;ensemble des besoins de
+              l&rsquo;automobiliste exigeant — sans sous-traitance, sans
+              approximation, avec la même équipe d&rsquo;un bout à l&rsquo;autre.
+            </p>
+          </FadeUp>
         </Container>
-      </Section>
+      </section>
+
+      <section className="bg-cream-200">
+        <Container className="flex flex-col gap-24 py-20 md:gap-28 md:py-28 lg:py-32">
+          {services.map((service, idx) => {
+            const reversed = idx % 2 === 1;
+            const Icon = service.icon;
+            return (
+              <article
+                key={service.slug}
+                id={service.slug}
+                className="grid scroll-mt-24 grid-cols-1 items-center gap-10 lg:grid-cols-12 lg:gap-16"
+              >
+                <FadeUp className={cn('lg:col-span-6', reversed && 'lg:order-2')}>
+                  <div className="relative aspect-[4/3] overflow-hidden">
+                    <Image
+                      src={service.cover}
+                      alt={service.title}
+                      fill
+                      sizes="(max-width: 1024px) 100vw, 50vw"
+                      className="object-cover"
+                    />
+                  </div>
+                </FadeUp>
+
+                <FadeUp
+                  delay={0.1}
+                  className={cn(
+                    'flex flex-col gap-5 lg:col-span-6',
+                    reversed && 'lg:order-1',
+                  )}
+                >
+                  <Icon className="h-10 w-10 text-gold-600" strokeWidth={1.25} />
+                  <span className="font-sans text-eyebrow uppercase tracking-eyebrow text-gold-600">
+                    Prestation {service.number}
+                  </span>
+                  <h2 className="font-serif text-display-md font-normal text-navy-700">
+                    {service.title}
+                  </h2>
+                  <p className="text-base leading-relaxed text-ink-500">
+                    {service.description}
+                  </p>
+                  <ul className="mt-2 flex flex-col gap-3">
+                    {service.features.map((f) => (
+                      <li key={f} className="flex items-start gap-3 text-sm text-ink-700">
+                        <Check
+                          className="mt-1 h-4 w-4 shrink-0 text-gold-500"
+                          strokeWidth={2}
+                        />
+                        <span>{f}</span>
+                      </li>
+                    ))}
+                  </ul>
+                  <div className="mt-3">
+                    <Button href="/contact" variant="primary" withArrow>
+                      Demander un devis
+                    </Button>
+                  </div>
+                </FadeUp>
+              </article>
+            );
+          })}
+        </Container>
+      </section>
 
       <ContactCTA />
     </>

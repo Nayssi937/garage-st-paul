@@ -1,54 +1,63 @@
 'use client';
 
-import Link from 'next/link';
 import { motion } from 'framer-motion';
-import { ArrowUpRight } from 'lucide-react';
+import { Wrench, Car, ClipboardCheck, CircleDot } from 'lucide-react';
 import { Container } from '@/components/ui/Container';
-import { services } from '@/lib/data/services';
+
+const items = [
+  {
+    icon: Wrench,
+    title: 'Entretien & Réparation',
+    description: "Un service complet pour l'entretien et la réparation de toutes marques.",
+  },
+  {
+    icon: Car,
+    title: 'Vente de Véhicules',
+    description: "Véhicules neufs et d'occasion sélectionnés avec soin, toutes marques.",
+  },
+  {
+    icon: ClipboardCheck,
+    title: 'Diagnostic & Technique',
+    description: 'Technologie de pointe et expertise pour un diagnostic précis et fiable.',
+  },
+  {
+    icon: CircleDot,
+    title: 'Pneus & Géométrie',
+    description: 'Un service pneus complet et un réglage de géométrie pour votre sécurité.',
+  },
+];
 
 export function ServicesGrid() {
   return (
-    <section className="relative bg-ink-900">
-      <Container className="py-20 md:py-24">
-        <ul className="grid grid-cols-1 gap-px overflow-hidden border border-ink-700 bg-ink-700 sm:grid-cols-2 lg:grid-cols-4">
-          {services.map((service, index) => {
-            const Icon = service.icon;
+    <section className="bg-cream-200 py-16 md:py-20">
+      <Container>
+        <ul className="grid grid-cols-1 gap-12 sm:grid-cols-2 lg:grid-cols-4 lg:gap-0">
+          {items.map((item, idx) => {
+            const Icon = item.icon;
             return (
               <motion.li
-                key={service.slug}
+                key={item.title}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, amount: 0.2 }}
+                viewport={{ once: true, amount: 0.3 }}
                 transition={{
-                  duration: 0.7,
-                  delay: index * 0.08,
+                  duration: 0.6,
+                  delay: idx * 0.08,
                   ease: [0.22, 1, 0.36, 1],
                 }}
-                className="bg-ink-900"
+                className="flex flex-col items-center gap-5 px-6 text-center lg:border-l lg:border-navy-700/10 lg:first:border-l-0"
               >
-                <Link
-                  href={`/services/${service.slug}`}
-                  className="group relative flex h-full flex-col items-center gap-4 px-6 py-10 text-center transition-colors duration-300 hover:bg-ink-800 md:px-8 md:py-12"
-                >
-                  <span className="absolute right-4 top-4 inline-flex h-8 w-8 items-center justify-center text-ink-500 opacity-0 transition-all duration-300 group-hover:text-racing-500 group-hover:opacity-100">
-                    <ArrowUpRight className="h-4 w-4" strokeWidth={1.5} />
-                  </span>
-
-                  <Icon
-                    className="h-12 w-12 text-racing-500 transition-transform duration-300 group-hover:scale-110"
-                    strokeWidth={1.25}
-                  />
-
-                  <h3 className="font-display text-xl uppercase tracking-wide text-ink-50">
-                    {service.title}
-                  </h3>
-
-                  <p className="max-w-[26ch] text-sm leading-relaxed text-ink-300">
-                    {service.excerpt}
-                  </p>
-
-                  <span className="absolute bottom-0 left-0 h-0.5 w-0 bg-racing-500 transition-all duration-500 ease-out-quart group-hover:w-full" />
-                </Link>
+                <Icon
+                  className="h-10 w-10 text-navy-700"
+                  strokeWidth={1.25}
+                  aria-hidden="true"
+                />
+                <h3 className="font-sans text-[12px] font-semibold uppercase tracking-[0.18em] text-navy-700">
+                  {item.title}
+                </h3>
+                <p className="max-w-[220px] text-sm leading-relaxed text-ink-500">
+                  {item.description}
+                </p>
               </motion.li>
             );
           })}

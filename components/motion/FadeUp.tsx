@@ -11,7 +11,7 @@ type FadeUpProps = {
   amount?: number;
   children: ReactNode;
   className?: string;
-  as?: 'div' | 'section' | 'article' | 'li' | 'span' | 'header';
+  as?: 'div' | 'section' | 'article' | 'li' | 'span' | 'header' | 'aside';
 };
 
 export function FadeUp({

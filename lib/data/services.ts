@@ -1,114 +1,104 @@
 import type { LucideIcon } from 'lucide-react';
-import { Wrench, Gauge, Sparkles, Handshake } from 'lucide-react';
+import { Wrench, Car, ClipboardCheck, CircleDot } from 'lucide-react';
 
-export type ServiceSlug = 'mecanique' | 'preparation' | 'restauration' | 'achat-vente';
+export type ServiceSlug =
+  | 'entretien-reparation'
+  | 'vente-vehicules'
+  | 'diagnostic-technique'
+  | 'pneus-geometrie';
 
 export type Service = {
   slug: ServiceSlug;
   number: string;
   title: string;
   shortTitle: string;
-  tagline: string;
   excerpt: string;
   description: string;
   icon: LucideIcon;
   cover: string;
   features: string[];
-  partners: string[];
 };
 
 export const services: Service[] = [
   {
-    slug: 'mecanique',
+    slug: 'entretien-reparation',
     number: '01',
-    title: 'Mécanique de précision',
-    shortTitle: 'Mécanique',
-    tagline: 'Diagnostic, entretien, réparation — toutes marques.',
-    excerpt:
-      'Entretien et réparation toutes marques avec exigence et expertise.',
+    title: 'Entretien & Réparation',
+    shortTitle: 'Entretien',
+    excerpt: "Un service complet pour l'entretien et la réparation de toutes marques.",
     description:
-      "L'entretien d'une mécanique exigeante demande des compétences précises, des outils adaptés et une vraie attention. Nous travaillons sur tous types de véhicules — modernes, youngtimers, classiques — avec la même rigueur. Chaque intervention est documentée, chaque pièce justifiée, chaque livraison contrôlée.",
+      "L'entretien d'un véhicule, c'est une affaire de précision et de discipline. Chaque intervention est planifiée, documentée et suivie par le même mécanicien d'un bout à l'autre — pour que vous repartiez avec une voiture saine, durablement. Nous travaillons toutes marques avec la même rigueur.",
     icon: Wrench,
     cover:
-      'https://images.unsplash.com/photo-1486262715619-67b85e0b08d3?w=1600&auto=format&fit=crop&q=80',
+      'https://images.unsplash.com/photo-1486262715619-67b85e0b08d3?w=1600&auto=format&fit=crop&q=85',
     features: [
-      'Diagnostic électronique multimarques (Bosch KTS, Autel, OBD constructeurs)',
-      'Service constructeur, vidange, distribution, embrayage, transmission',
-      'Mécanique générale moteur — culasses, joints, roulements, accessoires',
-      'Freinage haute performance — Brembo, AP Racing, Pagid',
-      'Géométrie 3D laser, équilibrage haute vitesse',
-      'Climatisation, électricité automobile, capteurs, faisceaux',
+      'Service constructeur, vidange, freinage, distribution, embrayage',
+      'Mécanique générale moteur — joints, accessoires, refroidissement',
+      "Climatisation : recharge, désinfection, contrôle d'étanchéité",
+      'Préparation contrôle technique cantonal',
+      'Devis détaillé avant toute intervention',
+      'Reprise systématique des points de contrôle de sécurité',
     ],
-    partners: ['Motul', 'Bosch', 'Brembo', 'Liqui Moly'],
   },
   {
-    slug: 'preparation',
+    slug: 'vente-vehicules',
     number: '02',
-    title: 'Préparation & Performance',
-    shortTitle: 'Préparation',
-    tagline: 'Optimiser, fiabiliser, transformer — pour la route ou la piste.',
-    excerpt:
-      'Optimisation moteur, suspension, freinage pour la route ou la compétition.',
+    title: 'Vente de Véhicules',
+    shortTitle: 'Vente',
+    excerpt: "Véhicules neufs et d'occasion sélectionnés avec soin, toutes marques.",
     description:
-      "Préparer une voiture, ce n'est pas pousser une puissance maximale. C'est trouver l'équilibre juste entre performance et fiabilité, en cohérence avec un usage. Que ce soit pour une journée circuit, une montée historique ou simplement un caractère affirmé sur route, nous concevons chaque préparation autour du pilote et de l'usage.",
-    icon: Gauge,
+      "Notre sélection de véhicules d'occasion est issue d'un sourcing rigoureux : Suisse en priorité, expertise pré-achat systématique, contrôle 120 points et garantie 12 mois minimum. Reprise transparente, financement et livraison clé en main.",
+    icon: Car,
     cover:
-      'https://images.unsplash.com/photo-1632823469887-fa1bdd9d6d3a?w=1600&auto=format&fit=crop&q=80',
+      'https://images.unsplash.com/photo-1542362567-b07e54358753?w=1600&auto=format&fit=crop&q=85',
     features: [
-      'Reprogrammation moteur sur banc de puissance — atmo, turbo, hybride',
-      'Échappements sport — Akrapovič, Inconel, fabrication sur mesure',
-      'Suspensions Öhlins, Bilstein, KW — réglage piste et route',
-      'Freinage gros diamètre, étriers monoblocs, durites aviation',
-      'Allègements et arceaux homologués FIA',
-      'Prestation track day complète — préparation, transport, assistance',
+      'Sélection premium toutes marques (BMW, Mercedes, Audi, Porsche, Range Rover…)',
+      'Contrôle 120 points + expertise mécanique avant mise en vente',
+      'Garantie 12 mois minimum, extensions possibles',
+      'Reprise transparente de votre véhicule actuel',
+      'Accompagnement financement et leasing',
+      'Livraison clé en main : carte grise, plaques, mise en circulation',
     ],
-    partners: ['Öhlins', 'Bilstein', 'KW', 'Akrapovič', 'AP Racing'],
   },
   {
-    slug: 'restauration',
+    slug: 'diagnostic-technique',
     number: '03',
-    title: 'Restauration',
-    shortTitle: 'Restauration',
-    tagline: "Faire revivre une voiture sans effacer son histoire.",
-    excerpt:
-      'Restauration complète de véhicules anciens et de course.',
+    title: 'Diagnostic & Technique',
+    shortTitle: 'Diagnostic',
+    excerpt: 'Technologie de pointe et expertise pour un diagnostic précis et fiable.',
     description:
-      "Une restauration réussie n'est pas une remise à neuf, c'est une seconde vie. Nous travaillons en partenariat avec des artisans choisis — sellier, peintre, tôlier, chromeur — pour préserver l'âme d'une voiture tout en lui offrant la fiabilité d'un usage moderne. Chaque projet est documenté du démontage à la livraison.",
-    icon: Sparkles,
+      "Un véhicule moderne, c'est près de soixante calculateurs qui dialoguent en permanence. Quand un voyant s'allume, l'enjeu n'est pas de l'éteindre, mais de comprendre. Notre équipement multi-marques et nos protocoles constructeurs nous permettent de poser un diagnostic précis.",
+    icon: ClipboardCheck,
     cover:
-      'https://images.unsplash.com/photo-1605559424843-9e4c228bf1c2?w=1600&auto=format&fit=crop&q=80',
+      'https://images.unsplash.com/photo-1632823469887-fa1bdd9d6d3a?w=1600&auto=format&fit=crop&q=85',
     features: [
-      'Restauration mécanique complète — moteur, boîte, ponts, train roulant',
-      'Carrosserie, tôlerie, peinture concours — partenaires artisans choisis',
-      'Sellerie cuir et tissu en collaboration avec maîtres selliers',
-      "Recherche de pièces d'origine, fabrication sur mesure si nécessaire",
-      'Préparation pour rallyes historiques (FIA, Tour Auto, Le Mans Classic)',
-      'Documentation photo et vidéo complète du projet',
+      'Valise diagnostic multi-marques (Bosch KTS, Autel, OBD constructeurs)',
+      'Lecture défauts moteur, ABS, airbag, BVA, climatisation',
+      'Codage et programmation calculateurs après remplacement',
+      'Expertise pré-achat indépendante (mécanique + électronique + historique)',
+      'Préparation au contrôle technique cantonal',
+      'Rapport écrit avec recommandations priorisées',
     ],
-    partners: ['Porsche Classic', 'Tour Auto', 'FIVA'],
   },
   {
-    slug: 'achat-vente',
+    slug: 'pneus-geometrie',
     number: '04',
-    title: 'Achat & Vente',
-    shortTitle: 'Achat & Vente',
-    tagline: 'Sourcing, expertise, accompagnement.',
-    excerpt:
-      'Sélection de véhicules de passion et accompagnement personnalisé.',
+    title: 'Pneus & Géométrie',
+    shortTitle: 'Pneus',
+    excerpt: 'Un service pneus complet et un réglage de géométrie pour votre sécurité.',
     description:
-      "Acheter ou vendre une voiture de caractère est rarement une transaction anodine. Notre rôle est d'apporter la connaissance technique du marché, le réseau et la rigueur d'expertise nécessaire pour sécuriser chaque opération. Nous sourcing en Europe et accompagnons jusqu'à la mise en circulation suisse.",
-    icon: Handshake,
+      "Le pneu, c'est la seule chose qui vous relie à la route — quatre empreintes de la taille d'une carte postale. Nous montons, équilibrons et stockons vos pneus avec le soin que cela mérite, et notre banc de géométrie 3D nous permet d'optimiser le comportement de votre véhicule à la fraction de millimètre près.",
+    icon: CircleDot,
     cover:
-      'https://images.unsplash.com/photo-1588258524675-5f0a1d4eea69?w=1600&auto=format&fit=crop&q=80',
+      'https://images.unsplash.com/photo-1607860108855-64acf2078ed9?w=1600&auto=format&fit=crop&q=85',
     features: [
-      'Sourcing personnalisé — recherche selon cahier des charges précis',
-      'Expertise pré-achat indépendante — mécanique, châssis, historique',
-      'Estimation et mise en valeur pour la vente',
-      "Démarches d'importation, expertise OFROU, immatriculation",
-      'Stockage hivernal sécurisé, mise en route printanière',
-      'Médiation entre vendeurs et acheteurs collectionneurs',
+      'Montage, équilibrage et permutation toutes tailles (jusqu\'à 23")',
+      'Géométrie 3D laser haute précision — train avant et arrière',
+      'Hôtel à pneus saisonnier : stockage climatisé, lavage, contrôle',
+      'Marques premium : Michelin, Continental, Pirelli, Bridgestone',
+      'Conseil sur le choix du pneu selon usage',
+      'Réparation crevaison et rechapage pneus haut de gamme',
     ],
-    partners: ['Classic Trader', 'Bring a Trailer', 'OFROU'],
   },
 ];
 

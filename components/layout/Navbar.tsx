@@ -22,17 +22,14 @@ export function Navbar() {
     return () => window.removeEventListener('scroll', onScroll);
   }, []);
 
-  // On home, header is transparent over the dark hero. After scroll, switch to cream.
-  // On other pages, always cream.
-  const transparent = isHome && !scrolled;
+  // Transparent over the dark hero on home, then solid cream after scroll.
+  const onDark = isHome && !scrolled;
 
   return (
     <header
       className={cn(
         'fixed inset-x-0 top-0 z-40 transition-all duration-300 ease-out-quart',
-        transparent
-          ? 'bg-transparent'
-          : 'border-b border-navy-700/10 bg-cream-200/95 backdrop-blur-md',
+        onDark ? 'bg-transparent' : 'border-b border-navy-700/10 bg-cream-200/95 backdrop-blur-md',
       )}
     >
       <div
@@ -41,7 +38,7 @@ export function Navbar() {
           scrolled ? 'h-16 md:h-20' : 'h-20 md:h-24',
         )}
       >
-        <Logo href="/" variant={transparent ? 'dark' : 'light'} size="sm" />
+        <Logo href="/" variant={onDark ? 'dark' : 'light'} size="sm" />
 
         <nav aria-label="Navigation principale" className="hidden lg:block">
           <ul className="flex items-center gap-8">
@@ -54,13 +51,13 @@ export function Navbar() {
                     href={item.href}
                     data-active={active || undefined}
                     className={cn(
-                      'relative inline-flex items-center font-sans text-[12px] uppercase tracking-wide transition-colors',
-                      transparent
+                      'relative inline-flex items-center font-sans text-[12px] font-medium uppercase tracking-[0.18em] transition-colors',
+                      onDark
                         ? 'text-cream-100/85 hover:text-cream-50'
                         : 'text-navy-700 hover:text-navy-700',
-                      'after:absolute after:left-0 after:-bottom-1.5 after:h-px after:w-full after:origin-left after:scale-x-0 after:bg-gold-500 after:transition-transform after:duration-300 hover:after:scale-x-100',
-                      'data-[active]:after:scale-x-100',
-                      transparent && 'after:bg-gold-400',
+                      'after:absolute after:left-0 after:-bottom-2 after:h-px after:w-full after:origin-left after:scale-x-0 after:transition-transform after:duration-300',
+                      onDark ? 'after:bg-gold-400' : 'after:bg-gold-500',
+                      'data-[active]:after:scale-x-100 hover:after:scale-x-100',
                     )}
                   >
                     {item.label}
@@ -75,9 +72,9 @@ export function Navbar() {
           <a
             href={`tel:${SITE_CONFIG.phone}`}
             className={cn(
-              'hidden items-center gap-2 rounded-none border px-4 py-2.5 font-sans text-[11px] uppercase tracking-wide transition-all md:inline-flex',
-              transparent
-                ? 'border-gold-400/60 text-cream-50 hover:border-gold-400 hover:bg-gold-400 hover:text-navy-700'
+              'hidden items-center gap-2 rounded-none border px-5 py-3 font-sans text-[11px] font-medium uppercase tracking-[0.12em] transition-all md:inline-flex',
+              onDark
+                ? 'border-cream-100/40 text-cream-50 hover:border-gold-400 hover:bg-gold-400 hover:text-navy-700'
                 : 'border-navy-700/30 text-navy-700 hover:border-gold-500 hover:bg-gold-400',
             )}
           >

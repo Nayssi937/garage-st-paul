@@ -3,24 +3,30 @@ import { Button } from '@/components/ui/Button';
 
 export default function NotFound() {
   return (
-    <Container className="flex min-h-[80vh] flex-col items-center justify-center gap-8 text-center">
-      <span className="font-mono text-2xs uppercase tracking-widest text-racing-500">// 404</span>
-      <h1 className="font-display text-display-2xl uppercase tracking-wide text-ink-50">
-        Page introuvable
-      </h1>
-      <span className="hairline-racing mx-auto" />
-      <p className="max-w-xl text-base leading-relaxed text-ink-300">
-        La page que vous cherchez n'existe pas ou a été déplacée. Pas de panique — revenez à
-        l'accueil.
-      </p>
-      <div className="flex flex-wrap justify-center gap-4">
-        <Button href="/" variant="primary" withArrow>
-          Retour à l'accueil
-        </Button>
-        <Button href="/contact" variant="secondary">
-          Nous contacter
-        </Button>
-      </div>
-    </Container>
+    <section className="on-dark relative isolate flex min-h-[80svh] items-center overflow-hidden bg-navy-700 text-cream-100">
+      <Container className="flex flex-col items-center gap-6 py-32 text-center">
+        <span className="font-sans text-eyebrow uppercase tracking-eyebrow text-gold-400">
+          Erreur 404
+        </span>
+        <h1 className="font-serif text-display-2xl font-normal leading-none text-cream-50">
+          <span className="text-gold-400">404</span>
+        </h1>
+        <h2 className="max-w-2xl font-serif text-display-md font-normal text-cream-50">
+          Cette page n&rsquo;existe pas.
+        </h2>
+        <p className="max-w-md text-base leading-relaxed text-cream-100/75">
+          La page que vous cherchez a peut-être été déplacée, ou n&rsquo;a
+          jamais existé. Revenez à l&rsquo;accueil ou contactez-nous.
+        </p>
+        <div className="mt-2 flex flex-wrap items-center justify-center gap-3">
+          <Button href="/" variant="primary" withArrow>
+            Retour à l&rsquo;accueil
+          </Button>
+          <Button href="/contact" variant="secondary-on-dark">
+            Nous contacter
+          </Button>
+        </div>
+      </Container>
+    </section>
   );
 }

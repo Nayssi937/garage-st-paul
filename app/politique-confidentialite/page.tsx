@@ -1,78 +1,81 @@
-import type { Metadata } from 'next';
-import { PageHero } from '@/components/layout/PageHero';
 import { Container } from '@/components/ui/Container';
-import { Section } from '@/components/ui/Section';
+import { ContactCTA } from '@/components/sections/ContactCTA';
 import { SITE_CONFIG, buildMetadata } from '@/lib/seo';
 
-export const metadata: Metadata = buildMetadata({
+export const metadata = buildMetadata({
   title: 'Politique de confidentialité',
-  description: 'Politique de confidentialité du site LS Automobiles.',
+  description: 'Politique de confidentialité du site Garage St-Paul.',
   path: '/politique-confidentialite',
 });
 
 export default function PolitiquePage() {
   return (
     <>
-      <PageHero
-        eyebrow="Légal"
-        title="Politique de confidentialité"
-        breadcrumbs={[
-          { label: 'Accueil', href: '/' },
-          { label: 'Politique de confidentialité' },
-        ]}
-      />
-      <Section bg="default">
-        <Container className="max-w-3xl">
-          <div className="flex flex-col gap-8 text-ink-200">
-            <Block title="Données collectées">
-              <p>
-                Nous collectons uniquement les informations que vous nous transmettez
-                volontairement via notre formulaire de contact (nom, email, téléphone optionnel,
-                message). Aucune donnée n'est collectée à votre insu.
-              </p>
-            </Block>
-            <Block title="Utilisation">
-              <p>
-                Ces informations servent exclusivement à répondre à votre demande. Elles ne sont
-                jamais partagées avec des tiers, ni utilisées à des fins commerciales sans votre
-                accord explicite.
-              </p>
-            </Block>
-            <Block title="Conservation">
-              <p>
-                Les messages reçus sont conservés tant que la relation client reste active, puis
-                archivés ou supprimés selon les obligations légales en vigueur.
-              </p>
-            </Block>
-            <Block title="Vos droits">
-              <p>
-                Conformément à la Loi suisse sur la protection des données (LPD), vous disposez
-                d'un droit d'accès, de rectification et de suppression de vos données. Pour
-                exercer ces droits, contactez-nous à{' '}
-                <a href={`mailto:${SITE_CONFIG.email}`} className="text-racing-500 hover:underline">
-                  {SITE_CONFIG.email}
-                </a>
-                .
-              </p>
-            </Block>
-            <Block title="Cookies">
-              <p>
-                Ce site utilise uniquement des cookies techniques nécessaires à son
-                fonctionnement. Aucun cookie de tracking publicitaire n'est déployé.
-              </p>
-            </Block>
+      <section className="on-dark relative isolate overflow-hidden bg-navy-700 pb-12 pt-32 text-cream-100 md:pb-16 md:pt-40">
+        <Container>
+          <span className="font-sans text-eyebrow uppercase tracking-eyebrow text-cream-100/60">
+            Informations légales
+          </span>
+          <h1 className="mt-5 font-serif text-display-xl font-normal text-cream-50">
+            Politique de confidentialité.
+          </h1>
+        </Container>
+      </section>
+
+      <section className="bg-cream-200 py-16 md:py-20">
+        <Container size="narrow">
+          <div className="prose-stpaul">
+            <h2>Données collectées</h2>
+            <p>
+              Nous collectons uniquement les informations que vous nous
+              transmettez volontairement via notre formulaire de contact (nom,
+              email, téléphone, message). Aucune donnée n&rsquo;est collectée à
+              votre insu.
+            </p>
+
+            <h2>Utilisation</h2>
+            <p>
+              Ces informations servent exclusivement à répondre à votre demande
+              et à gérer votre dossier client. Elles ne sont jamais partagées
+              avec des tiers, ni utilisées à des fins commerciales sans votre
+              accord explicite.
+            </p>
+
+            <h2>Conservation</h2>
+            <p>
+              Les messages reçus sont conservés tant que la relation client
+              reste active, puis archivés ou supprimés selon les obligations
+              légales en vigueur (10 ans pour les pièces comptables).
+            </p>
+
+            <h2>Cookies</h2>
+            <p>
+              Ce site utilise uniquement des cookies techniques nécessaires à
+              son fonctionnement. Aucun cookie de tracking publicitaire
+              n&rsquo;est déployé.
+            </p>
+
+            <h2>Vos droits</h2>
+            <p>
+              Conformément à la Loi suisse sur la protection des données (nLPD)
+              et au RGPD applicable aux résidents européens, vous disposez
+              d&rsquo;un droit d&rsquo;accès, de rectification, d&rsquo;effacement
+              et de portabilité de vos données. Pour exercer ces droits,
+              contactez-nous à{' '}
+              <a href={`mailto:${SITE_CONFIG.email}`}>{SITE_CONFIG.email}</a>.
+            </p>
+
+            <p className="text-sm">
+              <em>
+                Dernière mise à jour : janvier 2024 — contenu de démonstration
+                à valider par un conseiller juridique.
+              </em>
+            </p>
           </div>
         </Container>
-      </Section>
-    </>
-  );
-}
+      </section>
 
-function Block({ title, children }: { title: string; children: React.ReactNode }) {
-  return (
-    <div className="flex flex-col gap-3 border-t border-ink-700 pt-8 first:border-0 first:pt-0">
-      <h2 className="font-display text-2xl uppercase tracking-wide text-ink-50">{title}</h2>
-      <div className="space-y-2 text-base leading-relaxed">{children}</div>
-    </div>
+      <ContactCTA />
+    </>
   );
 }
