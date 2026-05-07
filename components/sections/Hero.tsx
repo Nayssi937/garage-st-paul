@@ -9,8 +9,8 @@ export function Hero() {
   return (
     <section className="on-dark relative isolate flex min-h-[100svh] items-center overflow-hidden bg-navy-700 text-cream-100">
       <Image
-        src="https://www.garagesp.ch/uploads/8/6/0/3/86039312/carroserie2_orig.jpg"
-        alt="Atelier carrosserie du Garage St-Paul à Lausanne"
+        src="https://images.unsplash.com/photo-1503376780353-7e6692767b70?w=2400&auto=format&fit=crop&q=85"
+        alt="Voiture de collection élégante devant le Garage St-Paul à Lausanne"
         fill
         priority
         sizes="100vw"
