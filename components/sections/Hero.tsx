@@ -9,8 +9,8 @@ export function Hero() {
   return (
     <section className="on-dark relative isolate flex min-h-[100svh] items-center overflow-hidden bg-navy-700 text-cream-100">
       <Image
-        src="https://images.unsplash.com/photo-1525609004556-c46c7d6cf023?w=2400&auto=format&fit=crop&q=85"
-        alt="Jaguar E-Type vert profond devant le Garage St-Paul à Fribourg"
+        src="https://www.garagesp.ch/uploads/8/6/0/3/86039312/carroserie2_orig.jpg"
+        alt="Atelier carrosserie du Garage St-Paul à Lausanne"
         fill
         priority
         sizes="100vw"
@@ -45,8 +45,9 @@ export function Hero() {
               transition={{ duration: 0.9, delay: 0.25, ease: [0.22, 1, 0.36, 1] }}
               className="max-w-md text-base leading-relaxed text-cream-100/85"
             >
-              Garage St-Paul, votre partenaire de confiance à Fribourg pour
-              l&rsquo;entretien, la réparation et la vente de véhicules.
+              Garage St-Paul Sàrl à Lausanne — entretien, carrosserie, service
+              express, pneus et vente de véhicules. Toutes marques, le bon
+              travail, la première fois.
             </motion.p>
 
             <motion.div

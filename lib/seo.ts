@@ -2,36 +2,37 @@ import type { Metadata } from 'next';
 
 export const SITE_CONFIG = {
   name: 'Garage St-Paul',
-  fullName: 'Garage St-Paul',
+  fullName: 'Garage St-Paul Sàrl',
   tagline: "L'exigence depuis 1962",
   description:
-    "Garage St-Paul, votre partenaire de confiance à Fribourg pour l'entretien, la réparation et la vente de véhicules toutes marques. L'exigence depuis 1962.",
+    "Garage St-Paul Sàrl à Lausanne — entretien, carrosserie, service express, pneus et vente de véhicules d'occasion. Toutes marques.",
   url: 'https://www.garagesp.ch',
   founded: 1962,
   address: {
-    street: 'Rte de la Glâne 34',
-    postalCode: '1700',
-    city: 'Fribourg',
-    region: 'FR',
+    street: "Rue de l'École de Commerce 1bis",
+    postalCode: '1004',
+    city: 'Lausanne',
+    region: 'VD',
     country: 'CH',
   },
-  phone: '+41264111565',
-  phoneDisplay: '026 411 15 65',
-  email: 'info@garagesp.ch',
-  hoursDisplay: 'Lundi – Vendredi · 07h30–12h00 / 13h30–18h00 — Samedi sur rendez-vous',
+  phone: '+41216463839',
+  phoneDisplay: '021 646 38 39',
+  email: 'contact@garagesaintpaul.ch',
+  hoursDisplay:
+    "Lundi – Jeudi · 07h30–12h00 / 13h30–18h00 — Vendredi · 07h30–12h00 / 13h30–17h00",
   hours: [
     { day: 'Lundi', open: '07:30', close: '12:00', open2: '13:30', close2: '18:00' },
     { day: 'Mardi', open: '07:30', close: '12:00', open2: '13:30', close2: '18:00' },
     { day: 'Mercredi', open: '07:30', close: '12:00', open2: '13:30', close2: '18:00' },
     { day: 'Jeudi', open: '07:30', close: '12:00', open2: '13:30', close2: '18:00' },
-    { day: 'Vendredi', open: '07:30', close: '12:00', open2: '13:30', close2: '18:00' },
-    { day: 'Samedi', open: 'Sur rendez-vous', close: '', closed: false },
+    { day: 'Vendredi', open: '07:30', close: '12:00', open2: '13:30', close2: '17:00' },
+    { day: 'Samedi', open: 'Fermé', close: '', closed: true },
     { day: 'Dimanche', open: 'Fermé', close: '', closed: true },
   ],
-  geo: { lat: 46.7973, lng: 7.139 },
+  geo: { lat: 46.5239, lng: 6.6321 }, // approx Lausanne 1004
   social: {
-    instagram: 'https://instagram.com/garagestpaul',
-    facebook: 'https://facebook.com/garagestpaul',
+    facebook: 'https://www.facebook.com/garagesp.ch',
+    instagram: 'https://www.instagram.com/',
   },
 };
 
@@ -78,7 +79,7 @@ export function autoDealerJsonLd() {
     url: SITE_CONFIG.url,
     telephone: SITE_CONFIG.phone,
     email: SITE_CONFIG.email,
-    priceRange: '$$$',
+    priceRange: '$$',
     foundingDate: String(SITE_CONFIG.founded),
     address: {
       '@type': 'PostalAddress',
@@ -92,11 +93,17 @@ export function autoDealerJsonLd() {
     openingHoursSpecification: [
       {
         '@type': 'OpeningHoursSpecification',
-        dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'],
+        dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday'],
         opens: '07:30',
         closes: '18:00',
       },
+      {
+        '@type': 'OpeningHoursSpecification',
+        dayOfWeek: ['Friday'],
+        opens: '07:30',
+        closes: '17:00',
+      },
     ],
-    sameAs: [SITE_CONFIG.social.instagram, SITE_CONFIG.social.facebook],
+    sameAs: [SITE_CONFIG.social.facebook],
   };
 }

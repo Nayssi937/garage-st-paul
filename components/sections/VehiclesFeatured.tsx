@@ -30,7 +30,7 @@ export function VehiclesFeatured() {
         </div>
 
         <ul className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
-          {featuredVehicles.slice(0, 3).map((v, idx) => (
+          {featuredVehicles.map((v, idx) => (
             <motion.li
               key={v.slug}
               initial={{ opacity: 0, y: 20 }}
@@ -57,12 +57,12 @@ export function VehiclesFeatured() {
                 </div>
                 <div className="flex flex-1 flex-col gap-3 bg-cream-100 px-6 pt-6">
                   <h3 className="text-center font-serif text-xl text-navy-700">
-                    {v.brand} {v.model.split(' ').slice(0, 3).join(' ')}
+                    {v.brand} {v.model}
                   </h3>
                   <ul className="flex items-center justify-center gap-3 text-center text-xs text-ink-500">
                     <li>{v.year}</li>
                     <li className="text-gold-500">·</li>
-                    <li>{v.mileage.toLocaleString('fr-CH').replace(/\s/g, "'")} km</li>
+                    <li>{v.categoryLabel}</li>
                     <li className="text-gold-500">·</li>
                     <li>{v.fuel}</li>
                   </ul>
@@ -70,12 +70,48 @@ export function VehiclesFeatured() {
                 <div className="border-t border-navy-700/10 bg-cream-100 px-6 py-4">
                   <span className="inline-flex items-center gap-2 font-sans text-[11px] font-medium uppercase tracking-wide text-navy-700 transition-colors group-hover:text-gold-700">
                     Voir le détail
-                    <ArrowRight className="h-3 w-3 transition-transform group-hover:translate-x-0.5" strokeWidth={1.75} />
+                    <ArrowRight
+                      className="h-3 w-3 transition-transform group-hover:translate-x-0.5"
+                      strokeWidth={1.75}
+                    />
                   </span>
                 </div>
               </Link>
             </motion.li>
           ))}
+
+          {/* Filler card if less than 3 vehicles */}
+          {featuredVehicles.length < 3 && (
+            <motion.li
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.2 }}
+              transition={{
+                duration: 0.7,
+                delay: featuredVehicles.length * 0.08,
+                ease: [0.22, 1, 0.36, 1],
+              }}
+              className="flex h-full min-h-[400px] flex-col items-center justify-center gap-4 border border-dashed border-navy-700/20 bg-ivory/40 px-8 text-center"
+            >
+              <span className="font-sans text-eyebrow uppercase tracking-eyebrow text-gold-600">
+                Sourcing en cours
+              </span>
+              <p className="font-serif text-xl text-navy-700">
+                Vous cherchez un véhicule particulier ?
+              </p>
+              <p className="text-sm leading-relaxed text-ink-500">
+                Notre stock évolue régulièrement. Nous pouvons aussi sourcer
+                un véhicule selon vos critères.
+              </p>
+              <Link
+                href="/contact"
+                className="mt-2 inline-flex items-center gap-2 font-sans text-eyebrow uppercase tracking-eyebrow text-gold-700 transition-colors hover:text-gold-600"
+              >
+                Nous contacter
+                <ArrowRight className="h-3 w-3" strokeWidth={1.75} />
+              </Link>
+            </motion.li>
+          )}
         </ul>
       </Container>
     </section>

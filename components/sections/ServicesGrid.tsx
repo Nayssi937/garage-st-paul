@@ -1,42 +1,19 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { Wrench, Car, ClipboardCheck, CircleDot } from 'lucide-react';
 import { Container } from '@/components/ui/Container';
-
-const items = [
-  {
-    icon: Wrench,
-    title: 'Entretien & Réparation',
-    description: "Un service complet pour l'entretien et la réparation de toutes marques.",
-  },
-  {
-    icon: Car,
-    title: 'Vente de Véhicules',
-    description: "Véhicules neufs et d'occasion sélectionnés avec soin, toutes marques.",
-  },
-  {
-    icon: ClipboardCheck,
-    title: 'Diagnostic & Technique',
-    description: 'Technologie de pointe et expertise pour un diagnostic précis et fiable.',
-  },
-  {
-    icon: CircleDot,
-    title: 'Pneus & Géométrie',
-    description: 'Un service pneus complet et un réglage de géométrie pour votre sécurité.',
-  },
-];
+import { homepageServices } from '@/lib/data/services';
 
 export function ServicesGrid() {
   return (
     <section className="bg-cream-200 py-16 md:py-20">
       <Container>
         <ul className="grid grid-cols-1 gap-12 sm:grid-cols-2 lg:grid-cols-4 lg:gap-0">
-          {items.map((item, idx) => {
+          {homepageServices.map((item, idx) => {
             const Icon = item.icon;
             return (
               <motion.li
-                key={item.title}
+                key={item.slug}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, amount: 0.3 }}
@@ -55,8 +32,8 @@ export function ServicesGrid() {
                 <h3 className="font-sans text-[12px] font-semibold uppercase tracking-[0.18em] text-navy-700">
                   {item.title}
                 </h3>
-                <p className="max-w-[220px] text-sm leading-relaxed text-ink-500">
-                  {item.description}
+                <p className="max-w-[230px] text-sm leading-relaxed text-ink-500">
+                  {item.excerpt}
                 </p>
               </motion.li>
             );

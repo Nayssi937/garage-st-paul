@@ -7,6 +7,8 @@ const nextConfig = {
     remotePatterns: [
       { protocol: 'https', hostname: 'images.unsplash.com' },
       { protocol: 'https', hostname: 'plus.unsplash.com' },
+      { protocol: 'https', hostname: 'www.garagesp.ch' },
+      { protocol: 'https', hostname: 'garagesp.ch' },
     ],
   },
   experimental: {

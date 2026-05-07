@@ -19,23 +19,24 @@ export function StoryBlock() {
             className="flex flex-col gap-6 lg:col-span-5"
           >
             <span className="font-sans text-eyebrow uppercase tracking-eyebrow text-cream-100/60">
-              Notre histoire
+              Notre savoir-faire
             </span>
             <h2 className="font-serif text-display-md font-normal leading-tight text-cream-50">
-              Plus de 60 ans de passion automobile à votre service.
+              Entretien, carrosserie, restauration — tout sous le même toit.
             </h2>
             <p className="max-w-md text-base leading-relaxed text-cream-100/75">
-              Fondé en 1962, le Garage St-Paul s&rsquo;est construit sur des
-              valeurs de qualité, de proximité et de confiance.
-              Aujourd&rsquo;hui encore, nous mettons notre savoir-faire et notre
-              expérience au service de chaque client avec la même exigence.
+              Implanté à Lausanne depuis des décennies, le Garage St-Paul Sàrl
+              entretient toutes marques avec la même rigueur. De
+              l&rsquo;intervention express à la restauration intégrale d&rsquo;un
+              véhicule de collection, notre atelier prend en charge votre
+              voiture du diagnostic à la restitution.
             </p>
             <div className="mt-2">
               <Link
-                href="/histoire"
+                href="/services"
                 className="inline-flex items-center gap-3 rounded-none border border-cream-100/40 px-6 py-3 font-sans text-[12px] font-medium uppercase tracking-[0.12em] text-cream-100 transition-all hover:border-gold-400 hover:text-gold-400"
               >
-                En savoir plus
+                Découvrir nos services
                 <ArrowRight className="h-3.5 w-3.5" strokeWidth={1.75} />
               </Link>
             </div>
@@ -50,11 +51,11 @@ export function StoryBlock() {
           >
             <div className="relative aspect-[4/3] overflow-hidden">
               <Image
-                src="https://images.unsplash.com/photo-1486006920555-c77dcf18193c?w=1800&auto=format&fit=crop&q=80"
-                alt="Garage St-Paul, photo d'époque années 1960 — voitures de collection devant l'atelier"
+                src="https://www.garagesp.ch/uploads/8/6/0/3/86039312/p8081102_1_orig.jpg"
+                alt="Atelier du Garage St-Paul à Lausanne"
                 fill
                 sizes="(max-width: 1024px) 100vw, 60vw"
-                className="object-cover sepia-[0.15] saturate-[0.85]"
+                className="object-cover"
               />
             </div>
           </motion.div>
